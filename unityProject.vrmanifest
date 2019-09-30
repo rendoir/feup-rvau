@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.rvautest.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\Testes\\RVAU Test\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "RVAU Test [Testing]"
+        }
+      }
+    }
+  ]
+}
