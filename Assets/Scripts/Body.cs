@@ -18,7 +18,8 @@ public class Body : MonoBehaviour
     void FixedUpdate()
     {
         float distanceFromFloor = Vector3.Dot(head.localPosition, Vector3.up);
-        capsuleCollider.height = distanceFromFloor;
+        capsuleCollider.height = distanceFromFloor - capsuleCollider.radius * 2;
         transform.localPosition = head.localPosition - distanceFromFloor * Vector3.up;
+        capsuleCollider.center = new Vector3(0, distanceFromFloor / 2, 0);
     }
 }

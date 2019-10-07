@@ -865,6 +865,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559040842}
   - component: {fileID: 559040843}
+  - component: {fileID: 559040841}
   m_Layer: 0
   m_Name: Locomotion
   m_TagString: Untagged
@@ -872,6 +873,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &559040841
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559040840}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!4 &559040842
 Transform:
   m_ObjectHideFlags: 0
@@ -901,12 +918,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Sensitivity: 0.1
   m_MaxSpeed: 1
+  m_Velocity: 100
   m_MovePress:
     actionPath: /actions/default/in/TouchpadTouched
     needsReinit: 0
   m_MoveValue:
     actionPath: /actions/default/in/TouchpadPosition
     needsReinit: 0
+  m_RigidBody: {fileID: 559040841}
 --- !u!1 &616615032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1139,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 820084635}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &631207699
+--- !u!114 &631207701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1405,14 +1424,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 13693334, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Center.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11455280, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5475726, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475726, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11455280, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+    - {fileID: 5475726, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
 --- !u!4 &820084636 stripped
 Transform:

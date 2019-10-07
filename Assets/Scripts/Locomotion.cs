@@ -7,6 +7,7 @@ public class Locomotion : MonoBehaviour
 {
     public float m_Sensitivity = 0.1f;
     public float m_MaxSpeed = 1.0f;
+    public float m_Velocity = 10f;
 
     public SteamVR_Action_Boolean m_MovePress = null;
     public SteamVR_Action_Vector2 m_MoveValue = null;
@@ -15,6 +16,7 @@ public class Locomotion : MonoBehaviour
 
     private Transform m_CameraRig = null;
     private Transform m_Head = null;
+    public Rigidbody m_RigidBody;
 
     void Start()
     {
@@ -50,6 +52,6 @@ public class Locomotion : MonoBehaviour
         }
 
         // Apply
-        transform.Translate(movement * Time.deltaTime);
+        m_RigidBody.velocity = movement * m_Velocity * Time.deltaTime;
     }
 }
