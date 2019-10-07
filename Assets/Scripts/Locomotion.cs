@@ -11,7 +11,7 @@ public class Locomotion : MonoBehaviour
     public SteamVR_Action_Boolean m_MovePress = null;
     public SteamVR_Action_Vector2 m_MoveValue = null;
 
-    private float m_Speed = 0.0f;
+    private Vector2 m_Speed = Vector2.zero;
 
     private CharacterController m_CharacterController = null;
     private Transform m_CameraRig = null;
@@ -58,17 +58,17 @@ public class Locomotion : MonoBehaviour
 
         // If not moving
         if (m_MovePress.GetLastStateUp(SteamVR_Input_Sources.Any))
-            m_Speed = 0;
+            m_Speed = Vector2.zero;
 
         // If button pressed
            if(m_MovePress.state)
         {
             // Add and clamp
-            m_Speed += m_MoveValue.axis.y * m_Sensitivity;
-            m_Speed = Mathf.Clamp(m_Speed, -m_MaxSpeed, m_MaxSpeed);
+            m_Speed += new Vector2(m_MoveValue.axis.x, m_MoveValue.axis.y) * m_Sensitivity;
+            m_Speed = Vector2.ClampMagnitude(m_Speed, m_MaxSpeed);
 
             // Orientation
-            movement += orientation * (m_Speed * Vector3.forward) * Time.deltaTime;
+            movement += orientation * (m_Speed.y * Vector3.forward + m_Speed.x * Vector3.right) * Time.deltaTime;
         }
 
         // Apply
