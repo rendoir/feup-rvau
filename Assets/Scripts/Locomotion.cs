@@ -13,14 +13,8 @@ public class Locomotion : MonoBehaviour
 
     private Vector2 m_Speed = Vector2.zero;
 
-    private CharacterController m_CharacterController = null;
     private Transform m_CameraRig = null;
     private Transform m_Head = null;
-
-    private void Awake()
-    {
-        m_CharacterController = GetComponent<CharacterController>();   
-    }
 
     void Start()
     {
@@ -30,29 +24,13 @@ public class Locomotion : MonoBehaviour
 
     void Update()
     {
-        HandleHead();
-        HandleHeight();
         CalculateMovement();
-    }
-
-    void HandleHead()
-    {
-        // Store current
-        Vector3 oldPosition = m_CameraRig.position;
-        Quaternion oldRotation = m_CameraRig.rotation;
-
-        // Rotation
-        transform.eulerAngles = new Vector3(0.0f, m_Head.rotation.eulerAngles.y, 0.0f);
-
-        // Restore
-        m_CameraRig.position = oldPosition;
-        m_CameraRig.rotation = oldRotation;
     }
 
     void CalculateMovement()
     {
         // Figure out movement orientation
-        Vector3 orientationEuler = new Vector3(0, transform.eulerAngles.y, 0);
+        Vector3 orientationEuler = new Vector3(0, m_Head.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);
         Vector3 movement = Vector3.zero;
 
@@ -68,32 +46,10 @@ public class Locomotion : MonoBehaviour
             m_Speed = Vector2.ClampMagnitude(m_Speed, m_MaxSpeed);
 
             // Orientation
-            movement += orientation * (m_Speed.y * Vector3.forward + m_Speed.x * Vector3.right) * Time.deltaTime;
+            movement += orientation * (m_Speed.y * Vector3.forward + m_Speed.x * Vector3.right);
         }
 
         // Apply
-        m_CharacterController.Move(movement);
-    }
-
-    void HandleHeight()
-    {
-        // Get the head in local space
-        float headHeight = Mathf.Clamp(m_Head.localPosition.y, 1, 2);
-        m_CharacterController.height = headHeight;
-
-        // Cut in half
-        Vector3 newCenter = Vector3.zero;
-        newCenter.y = m_CharacterController.height / 2;
-        newCenter.y += m_CharacterController.skinWidth;
-
-        // Move capsule in local space
-        newCenter.x = m_Head.localPosition.x;
-        newCenter.z = m_Head.localPosition.z;
-
-        // Rotate
-        newCenter = Quaternion.Euler(0, -transform.eulerAngles.y, 0) * newCenter;
-
-        // Apply
-        m_CharacterController.center = newCenter;
+        transform.Translate(movement * Time.deltaTime);
     }
 }
