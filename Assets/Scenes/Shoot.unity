@@ -2172,6 +2172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerInside: 0
   isPlayerPlaying: 0
+  isGameOver: 0
   MAX_BULLETS: 20
   MAX_TIME: 10
   bullets: 0
