@@ -15,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Bullet
+  - ShootRowEnd
   - 
   - 
   - 

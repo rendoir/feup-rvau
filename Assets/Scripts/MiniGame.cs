@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class MiniGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool isPlayerInside = false;
+    public bool isPlayerPlaying = false;
+
+    public virtual void OnPlayerEntered()
     {
-        
+        isPlayerInside = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void OnPlayerExited()
     {
-        
+        isPlayerInside = false;
+        isPlayerPlaying = false;
     }
 }
