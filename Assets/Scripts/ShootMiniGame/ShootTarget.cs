@@ -7,7 +7,13 @@ public class ShootTarget : MonoBehaviour
     public ShootRow row;
     public LayerMask rowEndColliderLayer;
     public LayerMask bulletLayer;
+    public bool hit;
 
+    void Start()
+    {
+        Restart();
+    }
+    
     void Update()
     {
         transform.position += row.speed * Time.deltaTime;
@@ -20,14 +26,19 @@ public class ShootTarget : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if(Utils.MaskContainsLayer(rowEndColliderLayer, other.gameObject.layer))
-            Restart();
+            OnRowEnd();
     }
 
     void OnBulletHit() {
-        
+        hit = true;
+        row.shootMiniGame.OnTargetHit();
     }
 
-    void Restart() {
+    void OnRowEnd() {
         transform.position = row.startTransform.position;
+    }
+
+    public void Restart() {
+        hit = false;
     }
 }
