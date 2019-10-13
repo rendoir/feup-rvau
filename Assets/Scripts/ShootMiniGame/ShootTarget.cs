@@ -7,11 +7,10 @@ public class ShootTarget : MonoBehaviour
     public ShootRow row;
     public LayerMask rowEndColliderLayer;
     public LayerMask bulletLayer;
-    public Vector3 speed;
 
     void Update()
     {
-        transform.position += speed * Time.deltaTime;
+        transform.position += row.speed * Time.deltaTime;
     }
 
     void OnCollisionEnter(Collision collision) {
