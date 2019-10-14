@@ -51,6 +51,11 @@
       "requirement": "mandatory"
     },
     {
+      "name": "/actions/default/in/SwitchMovement",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
