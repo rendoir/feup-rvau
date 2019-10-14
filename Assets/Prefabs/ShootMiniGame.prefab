@@ -1587,6 +1587,12 @@ MonoBehaviour:
   timerText: {fileID: 7397574247663124417}
   bulletsText: {fileID: 7397574249536222486}
   scoreText: {fileID: 7397574249307855661}
+  hand: {fileID: 0}
+  bulletPrefab: {fileID: 4075050229128536967, guid: 5654fa9744b142c49b54c06be9125117,
+    type: 3}
+  triggerAction:
+    actionPath: /actions/default/in/GrabPinch
+    needsReinit: 0
 --- !u!1 &7397574248463050329
 GameObject:
   m_ObjectHideFlags: 0

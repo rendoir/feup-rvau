@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Valve.VR;
 
 public class ShootMiniGame : MiniGame
 {
@@ -16,6 +17,10 @@ public class ShootMiniGame : MiniGame
     public TextMeshPro bulletsText;
     public TextMeshPro scoreText;
 
+    public GameObject hand;
+    public GameObject bulletPrefab;
+    public SteamVR_Action_Boolean triggerAction;
+
     private ShootTarget[] targets;
 
     void Start()
@@ -26,6 +31,8 @@ public class ShootMiniGame : MiniGame
 
         FindTargets();
         Restart();
+
+        triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.Any);
     }
 
     public void Update()
@@ -48,7 +55,6 @@ public class ShootMiniGame : MiniGame
         timerText.text = ((int) time).ToString();
 
         // Update bullets
-        // TODO - Check input and launch bullets
         bulletsText.text = bullets.ToString();
 
         // Update score
@@ -87,5 +93,13 @@ public class ShootMiniGame : MiniGame
 
     void FindTargets() {
         targets = GetComponentsInChildren<ShootTarget>();
-    } 
+    }
+
+    public void Shoot(SteamVR_Action_Boolean action, SteamVR_Input_Sources sources)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, hand.transform.position, hand.transform.rotation);
+        bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * hand.transform.forward);
+        bullets--;
+    }
+    
 }
