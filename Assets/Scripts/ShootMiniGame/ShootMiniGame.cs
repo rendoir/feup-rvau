@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class ShootMiniGame : MiniGame
 {
@@ -18,9 +17,13 @@ public class ShootMiniGame : MiniGame
     public TextMeshPro scoreText;
     public TextMeshPro playTip;
 
-    public GameObject hand;
+    private Hand hand;
+    private Holdable gun;
     public GameObject bulletPrefab;
     public SteamVR_Action_Boolean triggerAction;
+
+    public bool isGunAttached;
+    public float bulletForwardOffset = 0f;
 
     private ShootTarget[] targets;
 
@@ -28,6 +31,8 @@ public class ShootMiniGame : MiniGame
     {
         // TODO - Remove this
         isPlayerInside = true;
+
+        isGunAttached = false;
 
         FindTargets();
         Restart();
@@ -69,6 +74,9 @@ public class ShootMiniGame : MiniGame
     public override void OnPlayerExited()
     {
         base.OnPlayerExited();
+        gun.DetachFromHand(hand);
+        isGunAttached = false;
+        Restart();
     }
 
     public void Restart()
@@ -93,13 +101,12 @@ public class ShootMiniGame : MiniGame
 
     public void Shoot(SteamVR_Action_Boolean action, SteamVR_Input_Sources sources)
     {
-        // TODO - Check if player is holding the weapon
-        if(!isPlayerInside || !isPlayerPlaying)
+        if(!isPlayerInside || !isPlayerPlaying || !isGunAttached)
             return;
 
         // TODO - Check if trigger was pressed on the hand with the gun (use sources.Equals)
 
-        GameObject bullet = Instantiate(bulletPrefab, hand.transform.position, hand.transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, hand.transform.position + hand.transform.forward * bulletForwardOffset, hand.transform.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * hand.transform.forward);
         bullets--;
     }
@@ -138,6 +145,12 @@ public class ShootMiniGame : MiniGame
 
         // Update score text
         scoreText.text = hits.ToString();
+    }
+
+    public void OnGunAttached(Hand hand, Holdable gun) {
+        isGunAttached = true;
+        this.hand = hand;
+        this.gun = gun;
     }
 
 }
