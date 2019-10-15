@@ -29,9 +29,6 @@ public class ShootMiniGame : MiniGame
 
     void Start()
     {
-        // TODO - Remove this
-        isPlayerInside = true;
-
         isGunAttached = false;
 
         FindTargets();
@@ -74,9 +71,15 @@ public class ShootMiniGame : MiniGame
     public override void OnPlayerExited()
     {
         base.OnPlayerExited();
+
+        // Drop gun
         gun.DetachFromHand(hand);
         isGunAttached = false;
+
         Restart();
+
+        DisplayInterface(false);
+        DisplayTip(true);
     }
 
     public void Restart()
