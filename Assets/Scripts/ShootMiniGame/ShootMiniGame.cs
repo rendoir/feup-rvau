@@ -16,6 +16,7 @@ public class ShootMiniGame : MiniGame
     public TextMeshPro timerText;
     public TextMeshPro bulletsText;
     public TextMeshPro scoreText;
+    public TextMeshPro playTip;
 
     public GameObject hand;
     public GameObject bulletPrefab;
@@ -27,7 +28,6 @@ public class ShootMiniGame : MiniGame
     {
         // TODO - Remove this
         isPlayerInside = true;
-        isPlayerPlaying = true;
 
         FindTargets();
         Restart();
@@ -42,7 +42,6 @@ public class ShootMiniGame : MiniGame
         }
 
         if(!isPlayerPlaying) {
-            // TODO - Check start input and call Restart
             return;
         }
 
@@ -52,17 +51,13 @@ public class ShootMiniGame : MiniGame
 
         // Update timer
         time -= Time.deltaTime;
-        timerText.text = ((int) time).ToString();
+        time = Mathf.Max(time, 0);
 
-        // Update bullets
-        bulletsText.text = bullets.ToString();
-
-        // Update score
-        scoreText.text = hits.ToString();
+        UpdateInterface();
 
         // Check game over condition
         if(time <= 0 || hits >= targets.Length || bullets <= 0) {
-            isGameOver = true;
+            OnGameOver();
         }
     }
 
@@ -84,6 +79,7 @@ public class ShootMiniGame : MiniGame
         bullets = MAX_BULLETS;
         time = MAX_TIME;
         hits = 0;
+        isGameOver = false;
     }
 
     public void OnTargetHit()
@@ -97,9 +93,49 @@ public class ShootMiniGame : MiniGame
 
     public void Shoot(SteamVR_Action_Boolean action, SteamVR_Input_Sources sources)
     {
+        // TODO - Check if player is holding the weapon
+        if(!isPlayerInside || !isPlayerPlaying)
+            return;
+
         GameObject bullet = Instantiate(bulletPrefab, hand.transform.position, hand.transform.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * hand.transform.forward);
         bullets--;
     }
-    
+
+    public void OnButtonPressed() {
+        Restart();
+        isPlayerPlaying = true;
+        DisplayInterface(true);
+        DisplayTip(false);
+        UpdateInterface();
+    }
+
+    public void OnGameOver() {
+        isGameOver = true;
+        isPlayerPlaying = false;
+        DisplayInterface(false);
+        DisplayTip(true);
+    }
+
+    public void DisplayInterface(bool shouldDisplay) {
+        timerText.gameObject.SetActive(shouldDisplay);
+        scoreText.gameObject.SetActive(shouldDisplay);
+        bulletsText.gameObject.SetActive(shouldDisplay);
+    }
+
+    public void DisplayTip(bool shouldDisplay) {
+        playTip.gameObject.SetActive(shouldDisplay);
+    }
+
+    public void UpdateInterface() {
+        // Update timer text
+        timerText.text = ((int) time).ToString();
+
+        // Update bullets text
+        bulletsText.text = bullets.ToString();
+
+        // Update score text
+        scoreText.text = hits.ToString();
+    }
+
 }
