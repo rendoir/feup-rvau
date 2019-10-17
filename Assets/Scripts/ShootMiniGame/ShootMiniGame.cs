@@ -18,7 +18,8 @@ public class ShootMiniGame : MiniGame
     public TextMeshPro playTip;
 
     private Hand hand;
-    private Holdable gun;
+    private Holdable gun = null;
+    public GameObject gunPrefab;
     public GameObject bulletPrefab;
     public SteamVR_Action_Boolean triggerAction;
 
@@ -33,6 +34,7 @@ public class ShootMiniGame : MiniGame
 
         FindTargets();
         Restart();
+        ResetGun();
 
         triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.Any);
     }
@@ -71,13 +73,8 @@ public class ShootMiniGame : MiniGame
     public override void OnPlayerExited()
     {
         base.OnPlayerExited();
-
-        // Drop gun
-        gun.DetachFromHand(hand);
-        isGunAttached = false;
-
+        ResetGun();
         Restart();
-
         DisplayInterface(false);
         DisplayTip(true);
     }
@@ -153,7 +150,22 @@ public class ShootMiniGame : MiniGame
     public void OnGunAttached(Hand hand, Holdable gun) {
         isGunAttached = true;
         this.hand = hand;
-        this.gun = gun;
+    }
+
+    public void ResetGun() {
+        if(isGunAttached || gun == null) {
+            GameObject newGun = Instantiate(gunPrefab, transform);
+
+            if(gun != null) {
+                isGunAttached = false;
+                gun.DetachFromHand(hand);
+                gun.enabled = false;
+                Destroy(gun.gameObject, 1.5f);
+            }
+            
+            gun = newGun.GetComponent<Holdable>();
+            gun.onAttachToHand.AddListener(OnGunAttached);
+        }
     }
 
 }
