@@ -53,6 +53,17 @@ public class ShootMiniGame : MiniGame
             return;
         }
 
+        /*
+        // Workaround for editor testing
+        if(isGunAttached) {
+            GrabTypes startingGrabType = hand.GetGrabEnding();
+            
+            if (startingGrabType != GrabTypes.None) {
+                Shoot(null, SteamVR_Input_Sources.Any);
+            }
+        }
+        */
+
         // Update timer
         time -= Time.deltaTime;
         time = Mathf.Max(time, 0);
