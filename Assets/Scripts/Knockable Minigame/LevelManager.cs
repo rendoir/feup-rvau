@@ -79,4 +79,11 @@ public class LevelManager : MonoBehaviour
         this.LevelCompletionHandler = handler;
     }
 
+    public void Reset()
+    {
+        Destroy(this.currentGameObject);
+        this.currentLevel = 0;
+        this.SpawnCurrentLevel();
+    }
+
 }

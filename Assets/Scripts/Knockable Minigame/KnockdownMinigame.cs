@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnockdownMinigame : MonoBehaviour
+public class KnockdownMinigame : MiniGame
 {
     public LevelManager LevelManager;
     public Basket BallBasket;
@@ -22,5 +22,12 @@ public class KnockdownMinigame : MonoBehaviour
     private void BasketDepletionHandler(Basket basket)
     {
         Debug.Log("Balls Depleted");
+    }
+
+    public override void OnPlayerExited()
+    {
+        base.OnPlayerExited();
+        BallBasket.Reset();
+        LevelManager.Reset();
     }
 }
