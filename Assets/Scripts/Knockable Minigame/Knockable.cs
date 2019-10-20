@@ -9,6 +9,12 @@ public class Knockable : MonoBehaviour
     private Quaternion initialQuarternion;
     private Renderer objectRenderer;
 
+    public delegate void NotifyOnKnockdownDelegate();
+
+    List<NotifyOnKnockdownDelegate> registeredDelegates = new List<NotifyOnKnockdownDelegate>();
+
+    private bool KnockedDown = false;
+
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
@@ -16,11 +22,24 @@ public class Knockable : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Quaternion currentRotations = this.gameObject.transform.rotation;
-        float delta = Quaternion.Angle(currentRotations, initialQuarternion);
-        if(delta >= deltaE)
+        if (!KnockedDown)
         {
-            objectRenderer.material.SetColor("_Color",Color.red);
+            Quaternion currentRotations = this.gameObject.transform.rotation;
+            float delta = Quaternion.Angle(currentRotations, initialQuarternion);
+            if (delta >= deltaE)
+            {
+                objectRenderer.material.SetColor("_Color", Color.red);
+                foreach (NotifyOnKnockdownDelegate handler in registeredDelegates)
+                {
+                    KnockedDown = true;
+                    handler();
+                }
+            }
         }
+    }
+
+    public void RegisterDelegate(NotifyOnKnockdownDelegate handler)
+    {
+        registeredDelegates.Add(handler);
     }
 }
