@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 127193176379906213}
   - component: {fileID: 127193176379906212}
   - component: {fileID: 127193176379906215}
-  - component: {fileID: 127193176379906214}
-  - component: {fileID: 127193176379906209}
+  - component: {fileID: 2918334151995377814}
   m_Layer: 0
   m_Name: Throwing Ball
   m_TagString: Untagged
@@ -179,7 +178,7 @@ MonoBehaviour:
   velocityAverageFrames: 5
   angularVelocityAverageFrames: 11
   estimateOnAwake: 0
---- !u!114 &127193176379906214
+--- !u!114 &2918334151995377814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 127193176379906208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
+  m_Script: {fileID: 11500000, guid: 929a8f36733636c479ffbaa11a89e5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentFlags: 44
@@ -208,18 +207,3 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactable: {fileID: 0}
---- !u!114 &127193176379906209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127193176379906208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0

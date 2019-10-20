@@ -132,8 +132,6 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void OnAttachedToHand( Hand hand )
 		{
-            //Debug.Log("<b>[SteamVR Interaction]</b> Pickup: " + hand.GetGrabStarting().ToString());
-
             hadInterpolation = this.rigidbody.interpolation;
 
             attached = true;
@@ -207,8 +205,6 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         protected virtual void HandAttachedUpdate(Hand hand)
         {
-
-
             if (hand.IsGrabEnding(this.gameObject))
             {
                 hand.DetachObject(gameObject, restoreOriginalParent);
