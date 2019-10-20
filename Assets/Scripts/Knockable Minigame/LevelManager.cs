@@ -26,7 +26,6 @@ public class LevelManager : MonoBehaviour
     private void SpawnCurrentLevel()
     {
         this.KnockedDownCans = 0;
-        Debug.Log(this.transform.position);
         this.currentGameObject = GameObject.Instantiate(Levels[currentLevel],this.transform);
         Knockable[] cans = this.currentGameObject.GetComponentsInChildren<Knockable>();
         TotalNumberOfCans = cans.Length;

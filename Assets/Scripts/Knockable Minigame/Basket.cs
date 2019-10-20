@@ -1,17 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class Basket : MonoBehaviour
 {
+    public TextMeshPro UsableBallScoreboard = null;
+
     public GameObject BallPrefab;
 
-    public int balls = 5;
+    public float DelayBetweenBallSpawn = 1.5f;
+
+    public int BallsToSpawn = 5;
 
     public float XSpawnOffset = 1.0f;
     public float ZSpawnOffset = 1.0f;
 
-    List<GameObject> Balls = new List<GameObject>();
+    public int UsableBalls = 0;
+
+    private List<GameObject> Balls = new List<GameObject>();
+
+    public delegate void OnBallDepletionDelegate(Basket basket);
+    private OnBallDepletionDelegate DepletionHandler = null;
 
     void Start()
     {
@@ -20,10 +31,12 @@ public class Basket : MonoBehaviour
 
     IEnumerator SpawnBalls()
     {
-        for(int i=0;i<balls;++i)
+        UsableBalls = BallsToSpawn;
+        this.UpdateText();
+        for(int i=0;i<BallsToSpawn;++i)
         {
             SpawnBall();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(DelayBetweenBallSpawn);
         }
     }
 
@@ -36,7 +49,8 @@ public class Basket : MonoBehaviour
         offset.x = xoffset;
         offset.z = zoffset;
 
-        var ball = GameObject.Instantiate(BallPrefab,this.transform.position + offset,this.transform.rotation);
+        GameObject ball = GameObject.Instantiate(BallPrefab,this.transform.position + offset,this.transform.rotation);
+        ball.GetComponent<ThrowingBall>().RegisterOnNotUsableListener(OnBallNotUsableHandler);
         Balls.Add(ball);
     }
 
@@ -48,6 +62,26 @@ public class Basket : MonoBehaviour
         }
         Balls.Clear();
         StartCoroutine(SpawnBalls());
+    }
+
+    private void UpdateText()
+    {
+        this.UsableBallScoreboard.text = ""+this.UsableBalls+"/"+BallsToSpawn;
+    }
+
+    private void OnBallNotUsableHandler()
+    {
+        this.UsableBalls--;
+        this.UpdateText();
+        if(this.UsableBalls == 0)
+        {
+            this.DepletionHandler(this);
+        }
+    }
+
+    public void RegisterBallDepletionHandler(OnBallDepletionDelegate handler)
+    {
+        this.DepletionHandler = handler;
     }
 
 }
