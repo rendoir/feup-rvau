@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class LevelManager: MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     public TextMeshPro scoreboard = null;
     public Basket ballBaket = null;
@@ -20,16 +20,17 @@ public class LevelManager: MonoBehaviour
 
     private void Start()
     {
-       this.SpawnCurrentLevel();
+        this.SpawnCurrentLevel();
     }
 
     private void SpawnCurrentLevel()
     {
         this.KnockedDownCans = 0;
-        this.currentGameObject = GameObject.Instantiate(Levels[currentLevel]);
+        Debug.Log(this.transform.position);
+        this.currentGameObject = GameObject.Instantiate(Levels[currentLevel],this.transform);
         Knockable[] cans = this.currentGameObject.GetComponentsInChildren<Knockable>();
         TotalNumberOfCans = cans.Length;
-        foreach(Knockable can in cans)
+        foreach (Knockable can in cans)
         {
             can.RegisterDelegate(OnDeathHandler);
         }
@@ -38,7 +39,7 @@ public class LevelManager: MonoBehaviour
 
     private void ClearCurrentLevel()
     {
-        if(currentGameObject != null)
+        if (currentGameObject != null)
         {
             Destroy(currentGameObject);
             currentGameObject = null;
@@ -49,13 +50,13 @@ public class LevelManager: MonoBehaviour
     {
         ClearCurrentLevel();
         this.currentLevel++;
-        if(this.currentLevel < Levels.Length)
+        if (this.currentLevel < Levels.Length)
         {
             SpawnCurrentLevel();
-        }
-        if(this.ballBaket != null)
-        {
-            ballBaket.Reset();
+            if (this.ballBaket != null)
+            {
+                ballBaket.Reset();
+            }
         }
     }
 
@@ -63,7 +64,7 @@ public class LevelManager: MonoBehaviour
     {
         this.KnockedDownCans++;
         this.UpdateText();
-        if(this.KnockedDownCans == this.TotalNumberOfCans && this.LevelCompletionHandler!=null)
+        if (this.KnockedDownCans == this.TotalNumberOfCans && this.LevelCompletionHandler != null)
         {
             this.LevelCompletionHandler(this);
         }
@@ -71,7 +72,7 @@ public class LevelManager: MonoBehaviour
 
     private void UpdateText()
     {
-        this.scoreboard.text = ""+this.KnockedDownCans+"/"+this.TotalNumberOfCans;
+        this.scoreboard.text = "" + this.KnockedDownCans + "/" + this.TotalNumberOfCans;
     }
 
     public void RegisterLevelCompletionHandler(LevelCompletionDelegate handler)

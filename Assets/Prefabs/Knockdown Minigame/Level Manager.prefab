@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0488a2519b41dc14d887f273bd5f5c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreboard: {fileID: 0}
+  ballBaket: {fileID: 0}
   Levels:
   - {fileID: 159412758070028134, guid: 3e7b356062bc2434594a0e9275ae5006, type: 3}
-  currentLevel: 1
+  - {fileID: 7835708188732490223, guid: 2de87499e40481d43b1f2a29117ff1f0, type: 3}
+  currentLevel: 0
