@@ -31,6 +31,9 @@ public class Locomotion : MonoBehaviour
 
     void CalculateMovement()
     {
+        if(m_Head == null || m_CameraRig == null)
+            return;
+
         // Figure out movement orientation
         Vector3 orientationEuler = new Vector3(0, m_Head.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);

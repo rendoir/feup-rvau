@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class ShootMiniGame : MiniGame
 {
@@ -16,21 +15,26 @@ public class ShootMiniGame : MiniGame
     public TextMeshPro timerText;
     public TextMeshPro bulletsText;
     public TextMeshPro scoreText;
+    public TextMeshPro playTip;
 
-    public GameObject hand;
+    private Hand hand;
+    private Holdable gun = null;
+    public GameObject gunPrefab;
     public GameObject bulletPrefab;
     public SteamVR_Action_Boolean triggerAction;
+
+    public bool isGunAttached;
+    public float bulletForwardOffset = 0f;
 
     private ShootTarget[] targets;
 
     void Start()
     {
-        // TODO - Remove this
-        isPlayerInside = true;
-        isPlayerPlaying = true;
+        isGunAttached = false;
 
         FindTargets();
         Restart();
+        ResetGun();
 
         triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.Any);
     }
@@ -42,7 +46,6 @@ public class ShootMiniGame : MiniGame
         }
 
         if(!isPlayerPlaying) {
-            // TODO - Check start input and call Restart
             return;
         }
 
@@ -50,19 +53,26 @@ public class ShootMiniGame : MiniGame
             return;
         }
 
+        /*
+        // Workaround for editor testing
+        if(isGunAttached) {
+            GrabTypes startingGrabType = hand.GetGrabEnding();
+            
+            if (startingGrabType != GrabTypes.None) {
+                Shoot(null, SteamVR_Input_Sources.Any);
+            }
+        }
+        */
+
         // Update timer
         time -= Time.deltaTime;
-        timerText.text = ((int) time).ToString();
+        time = Mathf.Max(time, 0);
 
-        // Update bullets
-        bulletsText.text = bullets.ToString();
-
-        // Update score
-        scoreText.text = hits.ToString();
+        UpdateInterface();
 
         // Check game over condition
         if(time <= 0 || hits >= targets.Length || bullets <= 0) {
-            isGameOver = true;
+            OnGameOver();
         }
     }
 
@@ -74,6 +84,10 @@ public class ShootMiniGame : MiniGame
     public override void OnPlayerExited()
     {
         base.OnPlayerExited();
+        ResetGun();
+        Restart();
+        DisplayInterface(false);
+        DisplayTip(true);
     }
 
     public void Restart()
@@ -84,6 +98,7 @@ public class ShootMiniGame : MiniGame
         bullets = MAX_BULLETS;
         time = MAX_TIME;
         hits = 0;
+        isGameOver = false;
     }
 
     public void OnTargetHit()
@@ -97,9 +112,71 @@ public class ShootMiniGame : MiniGame
 
     public void Shoot(SteamVR_Action_Boolean action, SteamVR_Input_Sources sources)
     {
-        GameObject bullet = Instantiate(bulletPrefab, hand.transform.position, hand.transform.rotation);
+        if(!isPlayerInside || !isPlayerPlaying || !isGunAttached)
+            return;
+
+        // TODO - Check if trigger was pressed on the hand with the gun (use sources.Equals)
+
+        GameObject bullet = Instantiate(bulletPrefab, hand.transform.position + hand.transform.forward * bulletForwardOffset, hand.transform.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * hand.transform.forward);
         bullets--;
     }
-    
+
+    public void OnButtonPressed() {
+        Restart();
+        isPlayerPlaying = true;
+        DisplayInterface(true);
+        DisplayTip(false);
+        UpdateInterface();
+    }
+
+    public void OnGameOver() {
+        isGameOver = true;
+        isPlayerPlaying = false;
+        DisplayInterface(false);
+        DisplayTip(true);
+    }
+
+    public void DisplayInterface(bool shouldDisplay) {
+        timerText.gameObject.SetActive(shouldDisplay);
+        scoreText.gameObject.SetActive(shouldDisplay);
+        bulletsText.gameObject.SetActive(shouldDisplay);
+    }
+
+    public void DisplayTip(bool shouldDisplay) {
+        playTip.gameObject.SetActive(shouldDisplay);
+    }
+
+    public void UpdateInterface() {
+        // Update timer text
+        timerText.text = ((int) time).ToString();
+
+        // Update bullets text
+        bulletsText.text = bullets.ToString();
+
+        // Update score text
+        scoreText.text = hits.ToString();
+    }
+
+    public void OnGunAttached(Hand hand, Holdable gun) {
+        isGunAttached = true;
+        this.hand = hand;
+    }
+
+    public void ResetGun() {
+        if(isGunAttached || gun == null) {
+            GameObject newGun = Instantiate(gunPrefab, transform);
+
+            if(gun != null) {
+                isGunAttached = false;
+                gun.DetachFromHand(hand);
+                gun.enabled = false;
+                Destroy(gun.gameObject, 1.5f);
+            }
+            
+            gun = newGun.GetComponent<Holdable>();
+            gun.onAttachToHand.AddListener(OnGunAttached);
+        }
+    }
+
 }
