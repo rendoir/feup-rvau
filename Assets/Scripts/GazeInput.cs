@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GazeInput : MonoBehaviour
 {
     public Image image;
-    public Transform head = null;
+    private Transform head = null;
     public LayerMask layer;
     public float fillSpeed = 10f;
     public float maxDistance = 100f;
@@ -19,8 +19,7 @@ public class GazeInput : MonoBehaviour
 
     void Start()
     {
-        // TODO - Uncoment for VR
-        //head = SteamVR_Render.Top().head;
+        head = SteamVR_Render.Top().head;
 
         canIncrement = true;
     }
@@ -50,18 +49,5 @@ public class GazeInput : MonoBehaviour
             canIncrement = true;
             image.fillAmount = 0f;
         }
-    }
-
-    /*
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Vector3 direction = head.forward * maxDistance;
-        Gizmos.DrawRay(head.position, direction);
-    }
-
-    public void TestComplete() {
-        Debug.Log("COMPLETE");
-    }
-    */
+    }    
 }

@@ -45,10 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 45389188215354331}
-  head: {fileID: 0}
   layer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8192
   fillSpeed: 1
   maxDistance: 100
   imageOffset: 0.001
