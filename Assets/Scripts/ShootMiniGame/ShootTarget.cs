@@ -9,6 +9,13 @@ public class ShootTarget : MonoBehaviour
     public LayerMask bulletLayer;
     public bool hit;
 
+    private AudioSource source;
+
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         Restart();
@@ -34,6 +41,7 @@ public class ShootTarget : MonoBehaviour
             hit = true;
             row.shootMiniGame.OnTargetHit();
         }
+        source.Play();
     }
 
     void OnRowEnd() {
