@@ -17,7 +17,7 @@ public class Basket : MonoBehaviour
     public float XSpawnOffset = 1.0f;
     public float ZSpawnOffset = 1.0f;
 
-    public int UsableBalls = 0;
+    private int UsableBalls = 0;
 
     private List<GameObject> Balls = new List<GameObject>();
 
@@ -26,23 +26,23 @@ public class Basket : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnBalls());
+
+        SpawnBalls();
     }
 
-    IEnumerator SpawnBalls()
+    void SpawnBalls()
     {
         UsableBalls = BallsToSpawn;
         this.UpdateText();
         for(int i=0;i<BallsToSpawn;++i)
         {
             SpawnBall();
-            yield return new WaitForSeconds(DelayBetweenBallSpawn);
         }
     }
 
     private void SpawnBall()
     {
-        Vector3 offset = new Vector3(0,1.5f,0);
+        Vector3 offset = new Vector3(0,0.5f,0);
 
         float xoffset = Random.Range( -XSpawnOffset, XSpawnOffset);
         float zoffset = Random.Range( -ZSpawnOffset, ZSpawnOffset);
@@ -61,7 +61,7 @@ public class Basket : MonoBehaviour
             Destroy(ball);
         }
         Balls.Clear();
-        StartCoroutine(SpawnBalls());
+        SpawnBalls();
     }
 
     private void UpdateText()
