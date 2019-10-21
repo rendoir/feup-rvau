@@ -12,7 +12,7 @@ namespace Valve.VR.InteractionSystem
 
         // Deletes release grabing logic
         protected override void HandAttachedUpdate(Hand hand)
-        {   
+        {
             /*
             // Release when the trigger is pressed again after attaching
             GrabTypes startingGrabType = hand.GetGrabStarting();
@@ -35,8 +35,10 @@ namespace Valve.VR.InteractionSystem
             attached = true;
 
 			onAttachToHand.Invoke(hand, this);
+            transform.localRotation = Quaternion.Euler(Vector3.zero);
+            transform.rotation = Quaternion.Euler(Vector3.zero);
 
-			hand.HoverLock( null );
+            hand.HoverLock( null );
             
             rigidbody.interpolation = RigidbodyInterpolation.None;
             
