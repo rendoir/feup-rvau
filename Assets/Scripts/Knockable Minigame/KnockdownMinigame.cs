@@ -30,4 +30,9 @@ public class KnockdownMinigame : MiniGame
         BallBasket.Reset();
         LevelManager.Reset();
     }
+
+    public override void OnPlayerEntered()
+    {
+        base.OnPlayerEntered();
+    }
 }
