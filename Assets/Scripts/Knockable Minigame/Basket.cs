@@ -49,7 +49,7 @@ public class Basket : MonoBehaviour
         offset.x = xoffset;
         offset.z = zoffset;
 
-        GameObject ball = GameObject.Instantiate(BallPrefab,this.transform.position + offset,this.transform.rotation);
+        GameObject ball = GameObject.Instantiate(BallPrefab,this.transform.position + offset,this.transform.rotation, transform);
         ball.GetComponent<ThrowingBall>().RegisterOnNotUsableListener(OnBallNotUsableHandler);
         Balls.Add(ball);
     }
