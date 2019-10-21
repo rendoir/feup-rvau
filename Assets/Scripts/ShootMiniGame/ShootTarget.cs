@@ -30,8 +30,10 @@ public class ShootTarget : MonoBehaviour
     }
 
     void OnBulletHit() {
-        hit = true;
-        row.shootMiniGame.OnTargetHit();
+        if(!hit) {
+            hit = true;
+            row.shootMiniGame.OnTargetHit();
+        }
     }
 
     void OnRowEnd() {

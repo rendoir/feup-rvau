@@ -115,7 +115,9 @@ public class ShootMiniGame : MiniGame
         if(!isPlayerInside || !isPlayerPlaying || !isGunAttached)
             return;
 
-        // TODO - Check if trigger was pressed on the hand with the gun (use sources.Equals)
+        // Check if action source matches the hand with the gun
+        if(hand.handType != sources)
+            return; 
 
         GameObject bullet = Instantiate(bulletPrefab, hand.transform.position + hand.transform.forward * bulletForwardOffset, hand.transform.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * hand.transform.forward);
