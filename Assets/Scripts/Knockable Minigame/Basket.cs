@@ -7,18 +7,12 @@ using Valve.VR.InteractionSystem;
 public class Basket : MonoBehaviour
 {
     public TextMeshPro UsableBallScoreboard = null;
-
     public GameObject BallPrefab;
-
-    public float DelayBetweenBallSpawn = 1.5f;
-
     public int BallsToSpawn = 5;
-
-    public float XSpawnOffset = 1.0f;
-    public float ZSpawnOffset = 1.0f;
+    public float SpawnRadius = 2f;
+    public float YSpawnOffset = 1.5f;
 
     private int UsableBalls = 0;
-
     private List<GameObject> Balls = new List<GameObject>();
 
     public delegate void OnBallDepletionDelegate(Basket basket);
@@ -34,29 +28,29 @@ public class Basket : MonoBehaviour
     {
         UsableBalls = BallsToSpawn;
         this.UpdateText();
-        for(int i=0;i<BallsToSpawn;++i)
+
+        float angleDelta = 360.0f / this.BallsToSpawn;
+        float currentAngle = 0f;
+        float currentYOffset = this.YSpawnOffset;
+
+        for (int i = 0; i < BallsToSpawn; ++i)
         {
-            SpawnBall();
+            float spawnX = Mathf.Sin(currentAngle * Mathf.PI/180.0f) * this.SpawnRadius;
+            float spawnZ = Mathf.Cos(currentAngle * Mathf.PI/180.0f) * this.SpawnRadius;
+            Vector3 offset = new Vector3(spawnX,currentYOffset,spawnZ);
+
+            GameObject ball = GameObject.Instantiate(BallPrefab, this.transform.position + offset, this.transform.rotation, transform);
+            ball.GetComponent<ThrowingBall>().RegisterOnNotUsableListener(OnBallNotUsableHandler);
+            Balls.Add(ball);
+
+            currentAngle += angleDelta;
+            currentYOffset += this.YSpawnOffset;
         }
-    }
-
-    private void SpawnBall()
-    {
-        Vector3 offset = new Vector3(0,0.5f,0);
-
-        float xoffset = Random.Range( -XSpawnOffset, XSpawnOffset);
-        float zoffset = Random.Range( -ZSpawnOffset, ZSpawnOffset);
-        offset.x = xoffset;
-        offset.z = zoffset;
-
-        GameObject ball = GameObject.Instantiate(BallPrefab,this.transform.position + offset,this.transform.rotation, transform);
-        ball.GetComponent<ThrowingBall>().RegisterOnNotUsableListener(OnBallNotUsableHandler);
-        Balls.Add(ball);
     }
 
     public void Reset()
     {
-        foreach(var ball in Balls)
+        foreach (var ball in Balls)
         {
             Destroy(ball);
         }
@@ -66,14 +60,14 @@ public class Basket : MonoBehaviour
 
     private void UpdateText()
     {
-        this.UsableBallScoreboard.text = ""+this.UsableBalls+"/"+BallsToSpawn;
+        this.UsableBallScoreboard.text = "" + this.UsableBalls + "/" + BallsToSpawn;
     }
 
     private void OnBallNotUsableHandler()
     {
         this.UsableBalls--;
         this.UpdateText();
-        if(this.UsableBalls == 0)
+        if (this.UsableBalls == 0)
         {
             this.DepletionHandler(this);
         }

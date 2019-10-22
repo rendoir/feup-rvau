@@ -609,7 +609,17 @@ PrefabInstance:
     - target: {fileID: 6469385747313253872, guid: 382b201421e60ec409931ec3e5470924,
         type: 3}
       propertyPath: BallsToSpawn
-      value: 1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469385747313253872, guid: 382b201421e60ec409931ec3e5470924,
+        type: 3}
+      propertyPath: SpawnRadius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469385747313253872, guid: 382b201421e60ec409931ec3e5470924,
+        type: 3}
+      propertyPath: YSpawnOffset
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 537226758062603226, guid: 382b201421e60ec409931ec3e5470924,
         type: 3}
