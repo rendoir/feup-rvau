@@ -135,7 +135,7 @@ MonoBehaviour:
   bulletLayer:
     serializedVersion: 2
     m_Bits: 512
-  hit: 0
+  flipSpeed: 10
 --- !u!82 &2306408820114191862
 AudioSource:
   m_ObjectHideFlags: 0
