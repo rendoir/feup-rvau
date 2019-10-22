@@ -119,7 +119,7 @@ public class ShootMiniGame : MiniGame
         if(hand.handType != sources)
             return; 
 
-        gun.GetComponent<AudioSource>().Play();
+        gun.GetComponent<Gun>().OnShoot();
 
         GameObject bullet = Instantiate(bulletPrefab, hand.transform.position + hand.transform.forward * bulletForwardOffset, hand.transform.rotation);
         bullet.transform.Rotate(90f, 0f, 0f);
