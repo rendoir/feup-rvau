@@ -52,7 +52,7 @@ MonoBehaviour:
   isGameOver: 0
   LevelManager: {fileID: 8909667624247701824}
   BallBasket: {fileID: 6469385747313253872}
-  Scoreboard: {fileID: 0}
+  Scoreboard: {fileID: 6519770185007440047}
 --- !u!1 &7209007916876299283
 GameObject:
   m_ObjectHideFlags: 0

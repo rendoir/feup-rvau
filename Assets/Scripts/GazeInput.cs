@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class GazeInput : MonoBehaviour
 {
     public Image image;
-    public Transform head = null;
+    private Transform head = null;
     public LayerMask layer;
     public float fillSpeed = 10f;
     public float maxDistance = 100f;
@@ -19,7 +19,7 @@ public class GazeInput : MonoBehaviour
 
     void Start()
     {
-        //head = SteamVR_Render.Top().head;
+        head = SteamVR_Render.Top().head;
 
         canIncrement = true;
     }

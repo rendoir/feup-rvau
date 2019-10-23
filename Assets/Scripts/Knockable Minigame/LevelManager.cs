@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        this.SpawnCurrentLevel();
+        //this.SpawnCurrentLevel();
     }
 
     private void SpawnCurrentLevel()
@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
         this.UpdateText();
     }
 
-    private void ClearCurrentLevel()
+    public void ClearCurrentLevel()
     {
         if (currentGameObject != null)
         {
@@ -84,6 +84,11 @@ public class LevelManager : MonoBehaviour
         Destroy(this.currentGameObject);
         this.currentLevel = 0;
         this.SpawnCurrentLevel();
+    }
+
+    public bool WasLevelCompleted()
+    {
+        return this.KnockedDownCans == this.TotalNumberOfCans;
     }
 
 }

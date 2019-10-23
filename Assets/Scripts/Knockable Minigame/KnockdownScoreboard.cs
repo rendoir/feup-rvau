@@ -54,7 +54,7 @@ public class KnockdownScoreboard : MonoBehaviour
         ballsCounter.text = text;
     }
 
-    private void HideAllObjects()
+    public void HideAllObjects()
     {
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(false);
@@ -63,7 +63,7 @@ public class KnockdownScoreboard : MonoBehaviour
         WinStateObject.gameObject.SetActive(false);
     }
 
-    private void ShowStartState()
+    public void ShowStartState()
     {
         StartStateObject.gameObject.SetActive(true);
         NormalStateObject.gameObject.SetActive(false);
@@ -72,7 +72,7 @@ public class KnockdownScoreboard : MonoBehaviour
         WinStateObject.gameObject.SetActive(false);
     }
 
-    private void ShowNormalStateObject()
+    public void ShowNormalStateObject()
     {
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(true);
@@ -81,7 +81,7 @@ public class KnockdownScoreboard : MonoBehaviour
         WinStateObject.gameObject.SetActive(false);
     }
 
-    private void ShowLossStateObject()
+    public void ShowLossStateObject()
     {
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(false);
@@ -90,7 +90,7 @@ public class KnockdownScoreboard : MonoBehaviour
         WinStateObject.gameObject.SetActive(false);
     }
 
-    private void ShowAdvancementStateObject()
+    public void ShowAdvancementStateObject()
     {
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(false);
@@ -99,7 +99,7 @@ public class KnockdownScoreboard : MonoBehaviour
         WinStateObject.gameObject.SetActive(false);
     }
 
-    private void ShowWinStateObject()
+    public void ShowWinStateObject()
     {
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(false);
@@ -108,6 +108,7 @@ public class KnockdownScoreboard : MonoBehaviour
         WinStateObject.gameObject.SetActive(true);
     }
 
+    /*
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Z)) this.ShowStartState();
@@ -116,5 +117,5 @@ public class KnockdownScoreboard : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.V)) this.ShowAdvancementStateObject();
         if(Input.GetKeyDown(KeyCode.B)) this.ShowWinStateObject();
     }
-
+    */
 }

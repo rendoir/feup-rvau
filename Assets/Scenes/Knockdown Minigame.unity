@@ -120,6 +120,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &268025237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6519770185007440047, guid: 382b201421e60ec409931ec3e5470924,
+    type: 3}
+  m_PrefabInstance: {fileID: 1844252284137701203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fa5f247c0c7a54e841bcd026571934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &460866340
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +481,7 @@ PrefabInstance:
     - target: {fileID: 45389186582534250, guid: 31afb604979c182eb8dd30736186297a,
         type: 3}
       propertyPath: OnGazeComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: test
+      value: GazeHandler
       objectReference: {fileID: 0}
     - target: {fileID: 45389186582534250, guid: 31afb604979c182eb8dd30736186297a,
         type: 3}
@@ -758,5 +770,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8909667624247701824, guid: 382b201421e60ec409931ec3e5470924,
+        type: 3}
+      propertyPath: Scoreboard
+      value: 
+      objectReference: {fileID: 268025237}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 382b201421e60ec409931ec3e5470924, type: 3}

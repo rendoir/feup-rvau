@@ -20,8 +20,7 @@ public class Basket : MonoBehaviour
 
     void Start()
     {
-
-        SpawnBalls();
+        //SpawnBalls();
     }
 
     void SpawnBalls()
@@ -50,12 +49,17 @@ public class Basket : MonoBehaviour
 
     public void Reset()
     {
+        this.Clear();
+        Balls.Clear();
+        SpawnBalls();
+    }
+
+    public void Clear()
+    {
         foreach (var ball in Balls)
         {
             Destroy(ball);
         }
-        Balls.Clear();
-        SpawnBalls();
     }
 
     private void UpdateText()
