@@ -6,6 +6,7 @@ public class KnockdownMinigame : MiniGame
 {
     public LevelManager LevelManager;
     public Basket BallBasket;
+    public KnockdownScoreboard Scoreboard;
 
     // Start is called before the first frame update
     void Start()
