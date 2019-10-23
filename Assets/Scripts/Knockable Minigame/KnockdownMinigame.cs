@@ -22,8 +22,8 @@ public class KnockdownMinigame : MiniGame
     private void BasketDepletionHandler(Basket basket)
     {
         Debug.Log("You Lost!");
-        BallBasket.Reset();
-        LevelManager.Reset();
+        //BallBasket.Reset();
+        //LevelManager.Reset();
     }
 
     public override void OnPlayerExited()

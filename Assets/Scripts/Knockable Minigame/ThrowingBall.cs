@@ -10,6 +10,17 @@ namespace Valve.VR.InteractionSystem
         public delegate void OnNotUsableEventDelegate();
         List<OnNotUsableEventDelegate> OnNotUsableListeners = new List<OnNotUsableEventDelegate>();
 
+        public float SpeedThreshold = 0.025f;
+        private Vector3 PreviousVelocity = Vector3.zero;
+        private bool hasBeenDetatched = false;
+        private Rigidbody Rigidbody;
+        private bool detectedAsDepleted = false;
+
+        void Start()
+        {
+            Rigidbody = GetComponent<Rigidbody>();
+        }
+
         protected override void HandHoverUpdate(Hand hand)
         {
             GrabTypes startingGrabType = hand.GetGrabStarting();
@@ -26,9 +37,29 @@ namespace Valve.VR.InteractionSystem
         protected override void OnDetachedFromHand(Hand hand)
         {
             base.OnDetachedFromHand(hand);
-            foreach(OnNotUsableEventDelegate handler in OnNotUsableListeners)
+            this.hasBeenDetatched = true;
+        }
+
+        void FixedUpdate()
+        {
+            if (hasBeenDetatched && !detectedAsDepleted)
             {
-                handler();
+                float velocityDelta = Mathf.Abs(Vector3.Distance(this.PreviousVelocity, this.Rigidbody.velocity));
+                if (velocityDelta < SpeedThreshold)
+                {
+                    Debug.Log("Ball Unsuable");
+                    detectedAsDepleted = true;
+                    foreach (OnNotUsableEventDelegate handler in OnNotUsableListeners)
+                    {
+                        handler();
+                    }
+                }
+                else
+                {
+                    this.PreviousVelocity.x = this.Rigidbody.velocity.x;
+                    this.PreviousVelocity.y = this.Rigidbody.velocity.y;
+                    this.PreviousVelocity.z = this.Rigidbody.velocity.z;
+                }
             }
         }
 
