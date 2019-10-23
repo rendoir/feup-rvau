@@ -15,12 +15,13 @@ public class KnockdownMinigame : MiniGame
     {
         LevelManager.RegisterLevelCompletionHandler(LevelCompletionHandler);
         BallBasket.RegisterBallDepletionHandler(BasketDepletionHandler);
+        this.CurrentState = 0;
         Scoreboard.ShowStartState();
     }
 
     private void LevelCompletionHandler(LevelManager levelManager)
     {
-        if(LevelManager.currentLevel == (LevelManager.Levels.Length - 1))
+        if (LevelManager.currentLevel == (LevelManager.Levels.Length - 1))
         {
             // won game state
             this.CurrentState = 4;
@@ -37,7 +38,7 @@ public class KnockdownMinigame : MiniGame
     private void BasketDepletionHandler(Basket basket)
     {
         // Set The State To The Loss State If We Are Supposed To
-        if(!LevelManager.WasLevelCompleted())
+        if (!LevelManager.WasLevelCompleted())
         {
             this.CurrentState = 2;
             this.Scoreboard.ShowLossStateObject();
@@ -49,13 +50,17 @@ public class KnockdownMinigame : MiniGame
         base.OnPlayerExited();
         BallBasket.Clear();
         LevelManager.ClearCurrentLevel();
-        // set state to 1
+        // set state to 0
+        this.CurrentState = 0;
+        Scoreboard.ShowStartState();
     }
 
     public override void OnPlayerEntered()
     {
         base.OnPlayerEntered();
-        // set state to 1
+        // set state to 0
+        this.CurrentState = 0;
+        Scoreboard.ShowStartState();
     }
 
     public void GazeHandler()
