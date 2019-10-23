@@ -28,6 +28,20 @@ public class KnockdownScoreboard : MonoBehaviour
         HideAllObjects();
     }
 
+    public void SetCanCount(int current,int total)
+    {
+        this.currentCans = current;
+        this.totalCans = total;
+        this.SetCansCounterText();
+    }
+
+    public void SetBallCount(int current,int total)
+    {
+        this.currentBalls = current;
+        this.totalBalls = total;
+        this.SetBallsCounterText();
+    }
+
     private void SetCansCounterText()
     {
         string text = "Cans:\n" + currentCans + "/" + totalCans;
@@ -92,16 +106,6 @@ public class KnockdownScoreboard : MonoBehaviour
         LossStateObject.gameObject.SetActive(false);
         AdvacementStateObject.gameObject.SetActive(false);
         WinStateObject.gameObject.SetActive(true);
-    }
-
-    private void ResetGame()
-    {
-
-    }
-
-    private void AdvanceLevel()
-    {
-
     }
 
     void Update()

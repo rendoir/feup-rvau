@@ -6,7 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class Basket : MonoBehaviour
 {
-    public TextMeshPro UsableBallScoreboard = null;
+    public KnockdownScoreboard scoreboard;
     public GameObject BallPrefab;
     public int BallsToSpawn = 5;
     public float SpawnRadius = 2f;
@@ -60,7 +60,7 @@ public class Basket : MonoBehaviour
 
     private void UpdateText()
     {
-        this.UsableBallScoreboard.text = "" + this.UsableBalls + "/" + BallsToSpawn;
+       this.scoreboard.SetBallCount(this.UsableBalls,this.BallsToSpawn);
     }
 
     private void OnBallNotUsableHandler()

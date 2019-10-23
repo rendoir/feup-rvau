@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public TextMeshPro scoreboard = null;
+    public KnockdownScoreboard Scoreboard;
     public Basket ballBaket = null;
 
     public GameObject[] Levels;
@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateText()
     {
-        this.scoreboard.text = "" + this.KnockedDownCans + "/" + this.TotalNumberOfCans;
+        this.Scoreboard.SetCanCount(this.KnockedDownCans,this.TotalNumberOfCans);
     }
 
     public void RegisterLevelCompletionHandler(LevelCompletionDelegate handler)

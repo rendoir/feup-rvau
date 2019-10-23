@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3355178252847254646}
-  - component: {fileID: 6907619813607625971}
-  - component: {fileID: 1568137028354785259}
   m_Layer: 13
   m_Name: AdvancemetnGameState
   m_TagString: Untagged
@@ -33,42 +31,6 @@ Transform:
   m_Father: {fileID: 6350488585131834114}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6907619813607625971
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2464942322872732909}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.6373491, y: 1, z: 0.15014133}
-  m_Center: {x: -1.3186746, y: 0, z: 0.044821993}
---- !u!114 &1568137028354785259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2464942322872732909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8367c7729538e5736bdc6642d55e2a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
-  fillSpeed: 10
-  maxDistance: 100
-  imageOffset: 0.001
-  distanceScale: 0.25
-  OnGazeComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3908567299447660382
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,8 +369,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 92577160899933211}
-  - component: {fileID: 1627842086128957872}
-  - component: {fileID: 4470814390392008603}
   m_Layer: 13
   m_Name: WinGameState
   m_TagString: Untagged
@@ -431,42 +391,6 @@ Transform:
   m_Father: {fileID: 6350488585131834114}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1627842086128957872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5345756390231595603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8367c7729538e5736bdc6642d55e2a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
-  fillSpeed: 10
-  maxDistance: 100
-  imageOffset: 0.001
-  distanceScale: 0.25
-  OnGazeComplete:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!65 &4470814390392008603
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5345756390231595603}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.8998966, y: 1, z: 0.08785191}
-  m_Center: {x: -2.9212394, y: 0, z: 0.011114461}
 --- !u!1 &5609976167658100418
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,8 +808,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842603072910954182}
-  - component: {fileID: 8269238880934791256}
-  - component: {fileID: 7312000890546356230}
   m_Layer: 13
   m_Name: LossGameState
   m_TagString: Untagged
@@ -908,42 +830,6 @@ Transform:
   m_Father: {fileID: 6350488585131834114}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8269238880934791256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6569991485511974322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8367c7729538e5736bdc6642d55e2a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
-  fillSpeed: 10
-  maxDistance: 100
-  imageOffset: 0.001
-  distanceScale: 0.25
-  OnGazeComplete:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!65 &7312000890546356230
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6569991485511974322}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.6352813, y: 1, z: 0.114682525}
-  m_Center: {x: 0.36894143, y: 0, z: -0.0035037175}
 --- !u!1 &7219478093173875686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,8 +1042,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8571490811203704572}
-  - component: {fileID: 8527742589361941752}
-  - component: {fileID: 8465794739606404205}
   m_Layer: 13
   m_Name: StartGameState
   m_TagString: Untagged
@@ -1180,42 +1064,6 @@ Transform:
   m_Father: {fileID: 6350488585131834114}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8527742589361941752
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447574310849494283}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.9894626, y: 0.53803086, z: 0.17967525}
-  m_Center: {x: -0.009826422, y: 0.062406063, z: 0.021410841}
---- !u!114 &8465794739606404205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7447574310849494283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8367c7729538e5736bdc6642d55e2a46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
-  fillSpeed: 10
-  maxDistance: 100
-  imageOffset: 0.001
-  distanceScale: 0.25
-  OnGazeComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7680959331925639706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,6 +1480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6350488585131834114}
   - component: {fileID: 9002133988304082048}
+  - component: {fileID: 5109941332296748170}
   m_Layer: 0
   m_Name: Scoreboard
   m_TagString: Untagged
@@ -1679,3 +1528,16 @@ MonoBehaviour:
   WinStateObject: {fileID: 5345756390231595603}
   cansCounter: {fileID: 6664316607755644464}
   ballsCounter: {fileID: 7733558278786294362}
+--- !u!65 &5109941332296748170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8859482563150634507}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.8247623, y: 1.3465431, z: 0.080961734}
+  m_Center: {x: -0.010945082, y: 0.013612866, z: -0.022823706}
