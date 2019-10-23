@@ -38,4 +38,10 @@ public class KnockdownMinigame : MiniGame
     {
         base.OnPlayerEntered();
     }
+
+    public void test()
+    {
+        Debug.Log("Hit");
+    }
+
 }
