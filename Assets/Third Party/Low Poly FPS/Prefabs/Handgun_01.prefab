@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4347226976299302}
   - component: {fileID: 33666515589048406}
   - component: {fileID: 23835158718552662}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Handgun_01_Iron_Sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4691602961401422}
   - component: {fileID: 33832857500582034}
   - component: {fileID: 23092561933669128}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Handgun_01_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 7137694263651580638}
   - component: {fileID: 3559110072629369412}
   - component: {fileID: 6668564537579186159}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Handgun_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 4404546223509156}
   - component: {fileID: 33127433654760796}
   - component: {fileID: 23961955901227076}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Handgun_01_Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,6 +584,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3141431653503276087, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -638,6 +643,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138877350976953443, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138859639140105219, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0223487f494fbb2f49bb6b6650d1e4d3, type: 3}

@@ -36,7 +36,8 @@ public class ShootMiniGame : MiniGame
         Restart();
         ResetGun();
 
-        triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.Any);
+        triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.LeftHand);
+        triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.RightHand);
     }
 
     public void Update()
@@ -112,12 +113,12 @@ public class ShootMiniGame : MiniGame
 
     public void Shoot(SteamVR_Action_Boolean action, SteamVR_Input_Sources sources)
     {
-        if(!isPlayerInside || !isPlayerPlaying || !isGunAttached)
+        if (!isPlayerInside || !isPlayerPlaying || !isGunAttached)
             return;
 
         // Check if action source matches the hand with the gun
         if(hand.handType != sources)
-            return; 
+            return;
 
         gun.GetComponent<Gun>().OnShoot();
 
@@ -129,6 +130,10 @@ public class ShootMiniGame : MiniGame
 
     public void OnButtonPressed() {
         Restart();
+
+        if (!isGunAttached)
+            return;
+
         isPlayerPlaying = true;
         DisplayInterface(true);
         DisplayTip(false);
