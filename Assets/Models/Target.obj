@@ -1,6 +1,6 @@
 # Blender v2.80 (sub 75) OBJ File: ''
 # www.blender.org
-mtllib target2.mtl
+mtllib Target.mtl
 o model
 v 0.001440 0.058467 -0.081418
 v 0.001433 0.094829 -0.031443
