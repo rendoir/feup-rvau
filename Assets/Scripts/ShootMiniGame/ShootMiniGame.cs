@@ -36,7 +36,8 @@ public class ShootMiniGame : MiniGame
         Restart();
         ResetGun();
 
-        triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.Any);
+        triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.LeftHand);
+        triggerAction.AddOnStateDownListener(Shoot, SteamVR_Input_Sources.RightHand);
     }
 
     public void Update()
@@ -112,18 +113,27 @@ public class ShootMiniGame : MiniGame
 
     public void Shoot(SteamVR_Action_Boolean action, SteamVR_Input_Sources sources)
     {
-        if(!isPlayerInside || !isPlayerPlaying || !isGunAttached)
+        if (!isPlayerInside || !isPlayerPlaying || !isGunAttached)
             return;
 
-        // TODO - Check if trigger was pressed on the hand with the gun (use sources.Equals)
+        // Check if action source matches the hand with the gun
+        if(hand.handType != sources)
+            return;
+
+        gun.GetComponent<Gun>().OnShoot();
 
         GameObject bullet = Instantiate(bulletPrefab, hand.transform.position + hand.transform.forward * bulletForwardOffset, hand.transform.rotation);
+        bullet.transform.Rotate(90f, 0f, 0f);
         bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * hand.transform.forward);
         bullets--;
     }
 
     public void OnButtonPressed() {
         Restart();
+
+        if (!isGunAttached)
+            return;
+
         isPlayerPlaying = true;
         DisplayInterface(true);
         DisplayTip(false);

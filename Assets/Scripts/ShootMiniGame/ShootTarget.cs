@@ -7,7 +7,20 @@ public class ShootTarget : MonoBehaviour
     public ShootRow row;
     public LayerMask rowEndColliderLayer;
     public LayerMask bulletLayer;
-    public bool hit;
+    public float flipSpeed = 1f;
+
+    private bool hit;
+    private AudioSource source;
+    private Quaternion initialRotation;
+    private Quaternion targetRotation;
+    private float timeCounter;
+
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+        initialRotation = transform.localRotation;
+        targetRotation = Quaternion.Euler(initialRotation.eulerAngles + new Vector3(0f,0f,-90f));
+    }
 
     void Start()
     {
@@ -17,6 +30,11 @@ public class ShootTarget : MonoBehaviour
     void Update()
     {
         transform.position += row.speed * Time.deltaTime;
+
+        if(hit) {
+            transform.localRotation = Quaternion.Slerp(initialRotation, targetRotation, timeCounter);
+            timeCounter += Time.deltaTime * flipSpeed;
+        }
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -30,8 +48,11 @@ public class ShootTarget : MonoBehaviour
     }
 
     void OnBulletHit() {
-        hit = true;
-        row.shootMiniGame.OnTargetHit();
+        if(!hit) {
+            hit = true;
+            row.shootMiniGame.OnTargetHit();
+        }
+        source.Play();
     }
 
     void OnRowEnd() {
@@ -40,5 +61,7 @@ public class ShootTarget : MonoBehaviour
 
     public void Restart() {
         hit = false;
+        transform.localRotation = initialRotation;
+        timeCounter = 0f;
     }
 }
