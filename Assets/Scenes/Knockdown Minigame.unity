@@ -316,6 +316,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &771184088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2124199846, guid: 8ad50b14b82e71346b5ea0aa88a26743,
+    type: 3}
+  m_PrefabInstance: {fileID: 1743398139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbb3b76837e2944b905423cdb4c6738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &901112397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -450,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleport: {fileID: 2145031676}
-  locomotion: {fileID: 0}
+  locomotion: {fileID: 771184088}
   teleportToggle:
     actionPath: /actions/default/in/SwitchMovement
     needsReinit: 0
