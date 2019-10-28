@@ -21,12 +21,15 @@ public class ShootMiniGame : MiniGame
     private Holdable gun = null;
     public GameObject gunPrefab;
     public GameObject bulletPrefab;
+    public AudioSource buttonSound;
+    public float buttonSoundPeriod = 3f;
     public SteamVR_Action_Boolean triggerAction;
 
     public bool isGunAttached;
     public float bulletForwardOffset = 0f;
 
     private ShootTarget[] targets;
+    private float timeSinceButtonPressed = 0f;
 
     void Start()
     {
@@ -47,6 +50,12 @@ public class ShootMiniGame : MiniGame
         }
 
         if(!isPlayerPlaying) {
+            timeSinceButtonPressed += Time.deltaTime;
+            if(timeSinceButtonPressed > buttonSoundPeriod) {
+                timeSinceButtonPressed = 0f;
+                buttonSound.Play();
+            }
+            
             return;
         }
 
@@ -130,6 +139,7 @@ public class ShootMiniGame : MiniGame
 
     public void OnButtonPressed() {
         Restart();
+        timeSinceButtonPressed = 0f;
 
         if (!isGunAttached)
             return;
