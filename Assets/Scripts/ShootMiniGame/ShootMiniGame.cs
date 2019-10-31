@@ -24,6 +24,7 @@ public class ShootMiniGame : MiniGame
     public AudioSource buttonSound;
     public float buttonSoundPeriod = 3f;
     public SteamVR_Action_Boolean triggerAction;
+    public GameObject gunSpawnPoint;
 
     public bool isGunAttached;
     public float bulletForwardOffset = 0f;
@@ -185,7 +186,7 @@ public class ShootMiniGame : MiniGame
 
     public void ResetGun() {
         if(isGunAttached || gun == null) {
-            GameObject newGun = Instantiate(gunPrefab, transform);
+            GameObject newGun = Instantiate(gunPrefab, gunSpawnPoint.transform);
 
             if(gun != null) {
                 isGunAttached = false;

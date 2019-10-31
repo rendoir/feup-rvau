@@ -579,16 +579,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4389320645946552}
     m_Modifications:
-    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
-        type: 3}
-      propertyPath: m_Name
-      value: ShootParticles
-      objectReference: {fileID: 0}
-    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 3141431653503276087, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -650,6 +640,16 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3138859639140105219, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
         type: 3}
       propertyPath: m_Layer
       value: 15

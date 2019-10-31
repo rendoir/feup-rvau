@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5711853662324796237}
   - component: {fileID: 3919880371608438717}
   - component: {fileID: 2848555083576118302}
-  - component: {fileID: 8867574994213735054}
   - component: {fileID: 6839402581275202497}
   - component: {fileID: 2306408820114191862}
+  - component: {fileID: 2778938766624322918}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -102,20 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!64 &8867574994213735054
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5421657298672728872}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -2432090755550338912, guid: 3634b921122024a899995f7f7ef63ed3, type: 3}
 --- !u!114 &6839402581275202497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +218,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &2778938766624322918
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5421657298672728872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.11
+  m_Center: {x: 0.04, y: -0.00026349723, z: -0.00046850007}
 --- !u!1 &6896625208027981144
 GameObject:
   m_ObjectHideFlags: 0
