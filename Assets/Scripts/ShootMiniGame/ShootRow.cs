@@ -9,5 +9,5 @@ public class ShootRow : MonoBehaviour
     public Transform startTransform;
     public Transform endTransform;
 
-    public Vector3 speed;
+    public float speed;
 }

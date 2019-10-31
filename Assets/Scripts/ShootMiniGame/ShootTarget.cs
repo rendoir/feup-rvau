@@ -29,7 +29,7 @@ public class ShootTarget : MonoBehaviour
     
     void Update()
     {
-        transform.position += row.speed * Time.deltaTime;
+        transform.position += transform.forward * row.speed * Time.deltaTime;
 
         if(hit) {
             transform.localRotation = Quaternion.Slerp(initialRotation, targetRotation, timeCounter);
