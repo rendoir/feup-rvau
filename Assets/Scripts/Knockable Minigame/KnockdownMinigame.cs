@@ -15,9 +15,7 @@ public class KnockdownMinigame : MiniGame
     {
         LevelManager.RegisterLevelCompletionHandler(LevelCompletionHandler);
         BallBasket.RegisterBallDepletionHandler(BasketDepletionHandler);
-        this.LevelManager.Reset();
-        this.BallBasket.Reset();
-        this.CurrentState = 1;
+        this.CurrentState = 0;
         Scoreboard.ShowStartState();
     }
 
