@@ -15,6 +15,10 @@ public class ShootTarget : MonoBehaviour
     private Quaternion targetRotation;
     private float timeCounter;
 
+    public enum TargetDifficulty { EASY, NORMAL, HARD }
+    
+    public TargetDifficulty difficulty = TargetDifficulty.NORMAL;
+
     void Awake()
     {
         source = GetComponent<AudioSource>();
@@ -29,7 +33,15 @@ public class ShootTarget : MonoBehaviour
     
     void Update()
     {
-        transform.position += transform.forward * row.speed * Time.deltaTime;
+        switch(difficulty) {
+            case TargetDifficulty.NORMAL:
+                transform.position += transform.forward * row.speed * Time.deltaTime;
+                break;
+            case TargetDifficulty.HARD:
+                transform.position += transform.forward * row.speed * Time.deltaTime + transform.up * Mathf.Sin(Time.time * 10f + this.GetHashCode()) / 5f * Time.deltaTime;
+                break;
+        }
+        
 
         if(hit) {
             transform.localRotation = Quaternion.Slerp(initialRotation, targetRotation, timeCounter);
