@@ -15,11 +15,15 @@ public class Knockable : MonoBehaviour
 
     private bool KnockedDown = false;
 
+    private AudioSource canSound;
+
     void Start()
     {
+        canSound = GetComponent<AudioSource>();
         objectRenderer = GetComponent<Renderer>();
         initialQuarternion = this.gameObject.transform.rotation;
     }
+
     void FixedUpdate()
     {
         if (!KnockedDown)
@@ -36,6 +40,14 @@ public class Knockable : MonoBehaviour
                 }
             }
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Vector3 impulse = collision.impulse;
+        float delay = Random.Range(0.001f, 0.005f);
+        //canSound.volume = impulse.normalized.magnitude/Vector3.one.magnitude;
+        canSound.PlayDelayed(delay);
     }
 
     public void RegisterDelegate(NotifyOnKnockdownDelegate handler)
