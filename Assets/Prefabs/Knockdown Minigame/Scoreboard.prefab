@@ -1529,7 +1529,7 @@ MonoBehaviour:
   WinStateObject: {fileID: 5345756390231595603}
   cansCounter: {fileID: 6664316607755644464}
   ballsCounter: {fileID: 7733558278786294362}
-  TimeBetweenSoundBeeps: 5
+  TimeBetweenSoundBeeps: 3
 --- !u!65 &5109941332296748170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1553,10 +1553,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 349f125e12b40a2489acfff1b03eedfd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b29f6da24ac333143ba3ac3d1434be64, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.85
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
