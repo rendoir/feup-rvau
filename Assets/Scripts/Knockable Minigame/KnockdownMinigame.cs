@@ -17,6 +17,7 @@ public class KnockdownMinigame : MiniGame
         BallBasket.RegisterBallDepletionHandler(BasketDepletionHandler);
         this.CurrentState = 0;
         Scoreboard.ShowStartState();
+        Scoreboard.StartPlayingSound();
     }
 
     private void LevelCompletionHandler(LevelManager levelManager)
@@ -26,12 +27,14 @@ public class KnockdownMinigame : MiniGame
             // won game state
             this.CurrentState = 4;
             this.Scoreboard.ShowWinStateObject();
+            Scoreboard.StartPlayingSound();
         }
         else
         {
             // advance level state
             this.CurrentState = 3;
             this.Scoreboard.ShowAdvancementStateObject();
+            Scoreboard.StartPlayingSound();
         }
     }
 
@@ -42,6 +45,7 @@ public class KnockdownMinigame : MiniGame
         {
             this.CurrentState = 2;
             this.Scoreboard.ShowLossStateObject();
+            Scoreboard.StartPlayingSound();
         }
     }
 
@@ -53,6 +57,7 @@ public class KnockdownMinigame : MiniGame
         // set state to 0
         this.CurrentState = 0;
         Scoreboard.ShowStartState();
+        Scoreboard.StopPlayingSound();
     }
 
     public override void OnPlayerEntered()
@@ -61,10 +66,12 @@ public class KnockdownMinigame : MiniGame
         // set state to 0
         this.CurrentState = 0;
         Scoreboard.ShowStartState();
+        Scoreboard.StartPlayingSound();
     }
 
     public void GazeHandler()
     {
+        Scoreboard.StopPlayingSound();
         switch (CurrentState)
         {
             case 0://start game state - start/reset game

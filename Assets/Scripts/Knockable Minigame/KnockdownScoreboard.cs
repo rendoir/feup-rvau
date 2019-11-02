@@ -21,11 +21,43 @@ public class KnockdownScoreboard : MonoBehaviour
     private int currentCans = 0;
     private int totalCans = 0;
 
+    public float TimeBetweenSoundBeeps = 1.0f;
+
+    private AudioSource beepSound;
+    private Coroutine soundPlayRoutine = null;
+
     void Start()
     {
+        beepSound = GetComponent<AudioSource>();
         SetBallsCounterText();
         SetCansCounterText();
         HideAllObjects();
+    }
+
+    public void StartPlayingSound()
+    {
+        if (soundPlayRoutine == null)
+        {
+            soundPlayRoutine = StartCoroutine("Sound");
+        }
+    }
+
+    public void StopPlayingSound()
+    {
+        if (soundPlayRoutine != null)
+        {
+            StopCoroutine(soundPlayRoutine);
+            soundPlayRoutine = null;
+        }
+    }
+
+    IEnumerator Sound()
+    {
+        while (true)
+        {
+            beepSound.Play();
+            yield return new WaitForSecondsRealtime(TimeBetweenSoundBeeps);
+        }
     }
 
     public void SetCanCount(int current,int total)
