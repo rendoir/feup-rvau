@@ -71,46 +71,49 @@ public class KnockdownMinigame : MiniGame
 
     public void GazeHandler()
     {
-        Scoreboard.StopPlayingSound();
-        switch (CurrentState)
+        if (isPlayerInside)
         {
-            case 0://start game state - start/reset game
-                {
-                    this.LevelManager.Reset();
-                    this.BallBasket.Reset();
-                    this.CurrentState = 1;
-                    this.Scoreboard.ShowNormalStateObject();
-                    break;
-                }
-            case 1:// normal game state do nothing in this case
-                {
-                    break;
-                }
-            case 2:// loss game state - reset game
-                {
-                    this.LevelManager.Reset();
-                    this.BallBasket.Reset();
-                    this.CurrentState = 1;
-                    this.Scoreboard.ShowNormalStateObject();
-                    break;
-                }
-            case 3:// level advancement game state - advance level and go into normal state
-                {
-                    this.BallBasket.Reset();
-                    this.LevelManager.advanceLevel();
-                    this.CurrentState = 1;
-                    this.Scoreboard.ShowNormalStateObject();
-                    break;
-                }
-            case 4:// victory game state - reset game
-                {
-                    this.LevelManager.Reset();
-                    this.BallBasket.Reset();
-                    this.CurrentState = 1;
-                    this.Scoreboard.ShowNormalStateObject();
-                    break;
-                }
-            default: break;
+            Scoreboard.StopPlayingSound();
+            switch (CurrentState)
+            {
+                case 0://start game state - start/reset game
+                    {
+                        this.LevelManager.Reset();
+                        this.BallBasket.Reset();
+                        this.CurrentState = 1;
+                        this.Scoreboard.ShowNormalStateObject();
+                        break;
+                    }
+                case 1:// normal game state do nothing in this case
+                    {
+                        break;
+                    }
+                case 2:// loss game state - reset game
+                    {
+                        this.LevelManager.Reset();
+                        this.BallBasket.Reset();
+                        this.CurrentState = 1;
+                        this.Scoreboard.ShowNormalStateObject();
+                        break;
+                    }
+                case 3:// level advancement game state - advance level and go into normal state
+                    {
+                        this.BallBasket.Reset();
+                        this.LevelManager.advanceLevel();
+                        this.CurrentState = 1;
+                        this.Scoreboard.ShowNormalStateObject();
+                        break;
+                    }
+                case 4:// victory game state - reset game
+                    {
+                        this.LevelManager.Reset();
+                        this.BallBasket.Reset();
+                        this.CurrentState = 1;
+                        this.Scoreboard.ShowNormalStateObject();
+                        break;
+                    }
+                default: break;
+            }
         }
     }
 
