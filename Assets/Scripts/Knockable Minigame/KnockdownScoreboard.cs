@@ -76,13 +76,13 @@ public class KnockdownScoreboard : MonoBehaviour
 
     private void SetCansCounterText()
     {
-        string text = "Cans:\n" + currentCans + "/" + totalCans;
+        string text = "CANS: " + currentCans + "/" + totalCans;
         cansCounter.text = text;
     }
 
     private void SetBallsCounterText()
     {
-        string text = "Balls:\n" + currentBalls + "/" + totalBalls;
+        string text = "BALLS: " + currentBalls + "/" + totalBalls;
         ballsCounter.text = text;
     }
 
