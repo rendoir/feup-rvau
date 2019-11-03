@@ -47,7 +47,6 @@ namespace Valve.VR.InteractionSystem
                 float velocityDelta = Mathf.Abs(Vector3.Distance(this.PreviousVelocity, this.Rigidbody.velocity));
                 if (velocityDelta < SpeedThreshold)
                 {
-                    Debug.Log("Ball Unsuable");
                     detectedAsDepleted = true;
                     foreach (OnNotUsableEventDelegate handler in OnNotUsableListeners)
                     {

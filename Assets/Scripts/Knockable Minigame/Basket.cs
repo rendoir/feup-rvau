@@ -56,7 +56,7 @@ public class Basket : MonoBehaviour
 
     public void Clear()
     {
-        foreach (var ball in Balls)
+        foreach (GameObject ball in Balls)
         {
             Destroy(ball);
         }

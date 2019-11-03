@@ -62,7 +62,6 @@ public class KnockdownMinigame : MiniGame
 
     public override void OnPlayerEntered()
     {
-        Debug.Log("Player Enteres\n");
         base.OnPlayerEntered();
         // set state to 0
         this.CurrentState = 0;

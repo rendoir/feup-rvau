@@ -191,6 +191,11 @@ PrefabInstance:
       propertyPath: ballBaket
       value: 
       objectReference: {fileID: 6469385747313253872}
+    - target: {fileID: 9021319379450846103, guid: f805b10e051ed4246962b145a4d71ad5,
+        type: 3}
+      propertyPath: Scoreboard
+      value: 
+      objectReference: {fileID: 6519770185007440047}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f805b10e051ed4246962b145a4d71ad5, type: 3}
 --- !u!4 &3217634105781144471 stripped
@@ -371,6 +376,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 9002133988304082048, guid: 10e644ce926c4a34bb9e510699e4f754,
+        type: 3}
+      propertyPath: Minigame
+      value: 
+      objectReference: {fileID: 1844252284069228095}
     - target: {fileID: 6350488585131834114, guid: 10e644ce926c4a34bb9e510699e4f754,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -441,17 +451,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 3958197749876276532, guid: 10e644ce926c4a34bb9e510699e4f754,
+    - target: {fileID: 3908567299447660382, guid: 10e644ce926c4a34bb9e510699e4f754,
         type: 3}
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 9002133988304082048, guid: 10e644ce926c4a34bb9e510699e4f754,
-        type: 3}
-      propertyPath: Minigame
-      value: 
-      objectReference: {fileID: 1844252284069228095}
-    - target: {fileID: 3908567299447660382, guid: 10e644ce926c4a34bb9e510699e4f754,
+    - target: {fileID: 3958197749876276532, guid: 10e644ce926c4a34bb9e510699e4f754,
         type: 3}
       propertyPath: m_Layer
       value: 13
