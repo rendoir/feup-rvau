@@ -17,7 +17,7 @@ public class KnockdownMinigame : MiniGame
         BallBasket.RegisterBallDepletionHandler(BasketDepletionHandler);
         this.CurrentState = 0;
         Scoreboard.ShowStartState();
-        Scoreboard.StartPlayingSound();
+        //Scoreboard.StartPlayingSound();
     }
 
     private void LevelCompletionHandler(LevelManager levelManager)
@@ -62,6 +62,7 @@ public class KnockdownMinigame : MiniGame
 
     public override void OnPlayerEntered()
     {
+        Debug.Log("Player Enteres\n");
         base.OnPlayerEntered();
         // set state to 0
         this.CurrentState = 0;
