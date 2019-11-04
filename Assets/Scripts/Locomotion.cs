@@ -24,7 +24,7 @@ public class Locomotion : MonoBehaviour
         m_Head = SteamVR_Render.Top().head;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         CalculateMovement();
     }
@@ -56,5 +56,10 @@ public class Locomotion : MonoBehaviour
 
         // Apply
         m_RigidBody.velocity = movement * m_Velocity * Time.deltaTime;
+    }
+
+    public void StopMoving()
+    {
+        m_RigidBody.velocity = Vector3.zero;
     }
 }

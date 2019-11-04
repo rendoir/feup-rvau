@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
 
     void ToggleMovement()
     {
+        // Reset speed
+        if (locomotion.enabled)
+            locomotion.StopMoving();
+
         teleport.enabled = isLocomotionActive;
         locomotion.enabled = !isLocomotionActive;
         foreach (TeleportMarkerBase marker in teleportMarkers)
