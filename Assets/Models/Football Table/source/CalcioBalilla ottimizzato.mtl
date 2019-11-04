@@ -1,0 +1,17 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 13.10.2017 17:43:01
+
+newmtl CalcioBalilla01
+	Ns 9.999999
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka E:\Cad\football-table--1.snapshot.1\max1\CB-UV1\flats\Spiegeln016_albedo.jpg
+	map_Kd E:\Cad\football-table--1.snapshot.1\max1\CB-UV1\flats\Spiegeln016_albedo.jpg
+	map_Ks E:\Cad\football-table--1.snapshot.1\max1\CB-UV1\flats\Spiegeln016_specular.jpg
