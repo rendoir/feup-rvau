@@ -3,7 +3,12 @@ guid: 90281aadee6026f83a2cdf0a75559e25
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green painted wood
+    second: {fileID: 2100000, guid: a5e14b9930b630a449f312500f70185f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
