@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Carnival.unity
+    guid: f77ce6e1bec2459e9b542463c418d7b5
   m_configObjects: {}

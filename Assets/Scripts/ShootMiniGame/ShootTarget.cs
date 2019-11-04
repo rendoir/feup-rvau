@@ -38,7 +38,7 @@ public class ShootTarget : MonoBehaviour
                 transform.position += transform.forward * row.speed * Time.deltaTime;
                 break;
             case TargetDifficulty.HARD:
-                transform.position += transform.forward * row.speed * Time.deltaTime + transform.up * Mathf.Sin(Time.time * 10f + this.GetHashCode()) / 5f * Time.deltaTime;
+                transform.position += transform.forward * row.speed * Time.deltaTime + transform.up * Mathf.Sin(Time.time * 10f + GetInstanceID()) / 5f * Time.deltaTime;
                 break;
         }
         
