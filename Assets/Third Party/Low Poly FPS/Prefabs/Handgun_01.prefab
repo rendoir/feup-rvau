@@ -196,6 +196,7 @@ Transform:
   - {fileID: 4404546223509156}
   - {fileID: 4691602961401422}
   - {fileID: 8538275633854444233}
+  - {fileID: 8691003710877256410}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -353,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachmentFlags: 45
-  attachmentOffset: {fileID: 0}
+  attachmentOffset: {fileID: 8691003710877256410}
   catchingSpeedThreshold: -1
   releaseVelocityStyle: 1
   releaseVelocityTimeOffset: -0.011
@@ -572,6 +573,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &2729412634294716449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8691003710877256410}
+  m_Layer: 15
+  m_Name: AttachmentTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8691003710877256410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2729412634294716449}
+  m_LocalRotation: {x: -0.258819, y: 0, z: 0, w: 0.9659259}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4389320645946552}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
 --- !u!1001 &6766261526752880382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -579,6 +610,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4389320645946552}
     m_Modifications:
+    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3141431653503276087, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -640,16 +681,6 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3138859639140105219, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
-        type: 3}
-      propertyPath: m_Name
-      value: ShootParticles
-      objectReference: {fileID: 0}
-    - target: {fileID: 3137324826925498113, guid: 0223487f494fbb2f49bb6b6650d1e4d3,
         type: 3}
       propertyPath: m_Layer
       value: 15

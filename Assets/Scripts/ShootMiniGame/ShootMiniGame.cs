@@ -25,9 +25,11 @@ public class ShootMiniGame : MiniGame
     public float buttonSoundPeriod = 3f;
     public SteamVR_Action_Boolean triggerAction;
     public GameObject gunSpawnPoint;
+    private Holdable gunRef;
 
     public bool isGunAttached;
     public float bulletForwardOffset = 0f;
+    public float bulletUpOffset = 0f;
 
     private ShootTarget[] targets;
     private float timeSinceButtonPressed = 0f;
@@ -132,9 +134,10 @@ public class ShootMiniGame : MiniGame
 
         gun.GetComponent<Gun>().OnShoot();
 
-        GameObject bullet = Instantiate(bulletPrefab, hand.transform.position + hand.transform.forward * bulletForwardOffset, hand.transform.rotation);
+
+        GameObject bullet = Instantiate(bulletPrefab, gunRef.transform.position + gunRef.transform.forward * bulletForwardOffset + gunRef.transform.up * bulletUpOffset, gunRef.transform.rotation);
         bullet.transform.Rotate(90f, 0f, 0f);
-        bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * hand.transform.forward);
+        bullet.GetComponent<Rigidbody>().AddForce(Bullet.force * gunRef.transform.forward);
         bullets--;
     }
 
@@ -182,6 +185,7 @@ public class ShootMiniGame : MiniGame
     public void OnGunAttached(Hand hand, Holdable gun) {
         isGunAttached = true;
         this.hand = hand;
+        gunRef = hand.GetComponentInChildren<Holdable>();
     }
 
     public void ResetGun() {
@@ -198,6 +202,7 @@ public class ShootMiniGame : MiniGame
             gun = newGun.GetComponent<Holdable>();
             gun.onAttachToHand.AddListener(OnGunAttached);
         }
+        gunRef = null;
     }
 
 }

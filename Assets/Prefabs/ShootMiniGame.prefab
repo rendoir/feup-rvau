@@ -1051,7 +1051,8 @@ MonoBehaviour:
     needsReinit: 0
   gunSpawnPoint: {fileID: 1185870969}
   isGunAttached: 0
-  bulletForwardOffset: 0.2
+  bulletForwardOffset: 0.15
+  bulletUpOffset: 0.03
 --- !u!1 &7397574248879246530
 GameObject:
   m_ObjectHideFlags: 0
