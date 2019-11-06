@@ -17,6 +17,8 @@ public class GazeInput : MonoBehaviour
 
     private bool canIncrement;
 
+    private bool shouldWork = true;
+
     void Start()
     {
         head = SteamVR_Render.Top().head;
@@ -31,6 +33,8 @@ public class GazeInput : MonoBehaviour
 
     void CheckGaze()
     {
+        if (!shouldWork) return;
+
         RaycastHit hitInfo;
         if(Physics.Raycast(head.position, head.forward, out hitInfo, maxDistance, layer, QueryTriggerInteraction.Collide)) {
             if(canIncrement) {
@@ -50,4 +54,10 @@ public class GazeInput : MonoBehaviour
             image.fillAmount = 0f;
         }
     }    
+
+    public void ShouldWork(bool shouldWork)
+    {
+        this.shouldWork = shouldWork;
+        image.fillAmount = 0;
+    }
 }

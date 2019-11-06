@@ -26,6 +26,8 @@ public class KnockdownScoreboard : MonoBehaviour
     private AudioSource beepSound;
     private Coroutine soundPlayRoutine = null;
 
+    public GazeInput gazeInput;
+
     void Start()
     {
         beepSound = GetComponent<AudioSource>();
@@ -97,6 +99,7 @@ public class KnockdownScoreboard : MonoBehaviour
 
     public void ShowStartState()
     {
+        this.gazeInput.ShouldWork(true);
         StartStateObject.gameObject.SetActive(true);
         NormalStateObject.gameObject.SetActive(false);
         LossStateObject.gameObject.SetActive(false);
@@ -106,6 +109,7 @@ public class KnockdownScoreboard : MonoBehaviour
 
     public void ShowNormalStateObject()
     {
+        this.gazeInput.ShouldWork(false);
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(true);
         LossStateObject.gameObject.SetActive(false);
@@ -115,6 +119,7 @@ public class KnockdownScoreboard : MonoBehaviour
 
     public void ShowLossStateObject()
     {
+        this.gazeInput.ShouldWork(true);
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(false);
         LossStateObject.gameObject.SetActive(true);
@@ -124,6 +129,7 @@ public class KnockdownScoreboard : MonoBehaviour
 
     public void ShowAdvancementStateObject()
     {
+        this.gazeInput.ShouldWork(true);
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(false);
         LossStateObject.gameObject.SetActive(false);
@@ -133,6 +139,7 @@ public class KnockdownScoreboard : MonoBehaviour
 
     public void ShowWinStateObject()
     {
+        this.gazeInput.ShouldWork(true);
         StartStateObject.gameObject.SetActive(false);
         NormalStateObject.gameObject.SetActive(false);
         LossStateObject.gameObject.SetActive(false);

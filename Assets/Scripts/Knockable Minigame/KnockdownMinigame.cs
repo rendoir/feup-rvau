@@ -7,7 +7,7 @@ public class KnockdownMinigame : MiniGame
     public LevelManager LevelManager;
     public Basket BallBasket;
     public KnockdownScoreboard Scoreboard;
-
+    public GazeInput gazeInput;
     private int CurrentState = 0;
 
     // Start is called before the first frame update
@@ -58,6 +58,7 @@ public class KnockdownMinigame : MiniGame
         this.CurrentState = 0;
         Scoreboard.ShowStartState();
         Scoreboard.StopPlayingSound();
+        gazeInput.ShouldWork(false);
     }
 
     public override void OnPlayerEntered()
@@ -67,6 +68,7 @@ public class KnockdownMinigame : MiniGame
         this.CurrentState = 0;
         Scoreboard.ShowStartState();
         Scoreboard.StartPlayingSound();
+        gazeInput.ShouldWork(true);
     }
 
     public void GazeHandler()
